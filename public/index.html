@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Node.js Web sockets test</title>
+
+	<script src="socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect();
+		socket.on('count', function(data){
+			alert(data.value);
+			document.getElementById("result").innerHTML = data.value;
+		});
+			
+		function setValue(){
+			socket.emit('set', {value:5});
+		}
+	
+	</script>
+	</head>
+	<body>
+	<div id="result"></div>
+	<input type="button" onclick="setValue()" name="set" value="Set Value"/>
+	</body>
+</html>
